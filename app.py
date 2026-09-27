@@ -21,7 +21,8 @@ if st.button("Predict"):
         
         # If your model/scaler requires handling sparse matrices or specific features:
         # (Standard text-only pipelines use tfidf directly into the model)
-        prediction = model.predict(data_tfidf)
+        data_scaled = scaler.transform(data_tfidf)
+        prediction = model.predict(data_scaled)
         
         # Display result
         if prediction[0] == 1:
